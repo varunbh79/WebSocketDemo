@@ -40,7 +40,7 @@ public class RabbitMQChatController {
         }
 
         @MessageMapping("/guestleft")
-        public void sendGuestLeft(ClientChatMessage clientChatMessage) {
+        public void sendGuestLeft(ClientChatMessage clientChatMessage){
             simpMessagingTemplate.convertAndSend("/topic/guestsleft",new ServerChatMessage(clientChatMessage.getSenderName(),new SimpleDateFormat("hh:mm:ss a").format(new Date())));
         }
 

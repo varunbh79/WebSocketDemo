@@ -48,17 +48,21 @@ function connect() {
     
 }
 
-function disconnect() {
-
-    shortName = $("#shortName").val();
-    timeStamp = new Date().toLocaleTimeString();
-    $("#members").append("<tr><td>" + shortName + " just left at " + timeStamp + "</td></tr>");
-    sendGuestLeft();
+function closeSocketConnection() {
     if (stompClient !== null) {
         stompClient.disconnect();
     }
     setConnected(false);
     console.log("Disconnected");
+}
+
+ function disconnect() {
+
+   /* shortName = $("#shortName").val();
+    timeStamp = new Date().toLocaleTimeString();
+    //$("#members").append("<tr><td>" + shortName + " just left at " + timeStamp + "</td></tr>");*/
+     sendGuestLeft();
+     setTimeout(()=>closeSocketConnection(),1000);
 
 
 }
@@ -81,7 +85,7 @@ function sendName() {
     stompClient.send("/app/guestjoin", {}, JSON.stringify({'message': $("#shortName").val()}));
 }
 
-function sendGuestLeft() {
+ function sendGuestLeft() {
     stompClient.send("/app/guestleft", {}, JSON.stringify({'senderName': $("#shortName").val()}));
 }
 
