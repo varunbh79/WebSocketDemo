@@ -2,7 +2,6 @@ package com.websocket.rabbitmq.mqbrokerimpl.controller;
 
 import com.websocket.rabbitmq.mqbrokerimpl.model.ClientChatMessage;
 import com.websocket.rabbitmq.mqbrokerimpl.model.ServerChatMessage;
-import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
